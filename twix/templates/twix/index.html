@@ -12,8 +12,9 @@
         <h3>Write your message down</h3>
     </div>
     <div class="wrapper">
-        <div class = "message-array">
-            <input type=" text">
+        <form class = "message-array" method='POST'>
+            {% csrf_token %}
+            {{ form.record_text }}
             <div>       
                 <button>save</button>
             </div>
@@ -21,7 +22,9 @@
         <div class="message-array-out">
             <div>
                 <ul>
-                    <li>hello nigas</li>
+                    {% for rec in all_records %}
+                        <li>{{ rec }}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
